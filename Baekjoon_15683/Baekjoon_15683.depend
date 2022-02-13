@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1642653161 source:c:\users\82102\desktop\codeblock\baekjoon_15683\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<utility>
+	<deque>
+
