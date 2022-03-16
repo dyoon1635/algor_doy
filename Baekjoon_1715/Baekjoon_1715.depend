@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1647395524 source:c:\users\82102\desktop\codeblock\baekjoon_1715\main.cpp
+	<queue>
+	<stdio.h>
+
