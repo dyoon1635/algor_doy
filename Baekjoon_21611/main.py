@@ -1,14 +1,5 @@
 import sys
 
-n, m = map(int, sys.stdin.readline().split())
-board = [[0] * (n + 1)]
-s_x, s_y = int((n + 1) / 2), int((n + 1) / 2)
-dx = [0, -1, 1, 0, 0]
-dy = [0, 0, 0, -1, 1]
-count = [0, 0, 0, 0]
-for _ in range(n):
-    board.append([0] + list(map(int, sys.stdin.readline().split())))
-
 def out_of_bound(x, y):
     return x < 1 or x > n or y < 1 or y > n
 
@@ -57,16 +48,6 @@ def move_beads():
         if end == n ** 2: return
         board[sx][sy], board[ex][ey] = board[ex][ey], 0
 
-
-    """for i in range(1, (n ** 2) - 1):
-        x, y = linear_board[i]
-        if not board[x][y]:
-            for j in range(i + 1, (n ** 2)):
-                nx, ny = linear_board[j]
-                if board[nx][ny]:
-                    board[x][y], board[nx][ny] = board[nx][ny], board[x][y]
-                    break"""
-
 def count_consecutive_beads():
     check = [1] * (n ** 2)
     for i in range(1, n ** 2):
@@ -82,7 +63,6 @@ def explode_beads():
     check = count_consecutive_beads()
     i = n ** 2 - 1
     while i >= 0:
-    #for i in reversed(range(n ** 2)):
         if check[i] >= 4:
             exploded = True
             x, y = linear_board[i]
@@ -132,6 +112,15 @@ def printf():
         if idx == 0: continue
         print(each[1:])
     print()
+
+n, m = map(int, sys.stdin.readline().split())
+board = [[0] * (n + 1)]
+s_x, s_y = int((n + 1) / 2), int((n + 1) / 2)
+dx = [0, -1, 1, 0, 0]
+dy = [0, 0, 0, -1, 1]
+count = [0, 0, 0, 0]
+for _ in range(n):
+    board.append([0] + list(map(int, sys.stdin.readline().split())))
 
 for _ in range(m):
     d, s = map(int, sys.stdin.readline().split())
