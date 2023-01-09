@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(10**5)
+sys.setrecursionlimit(10 ** 6)
 
 n, q = map(int, input().split())
 ice = []
@@ -14,9 +14,7 @@ dy = [0, 1, 0, -1]
 visited = [[False] * (n) for _ in range(n)]
 
 def out_of_bound(x, y):
-    if x < 0 or x >= n or \
-        y < 0 or y >= n: return True
-    return False
+    return x < 0 or x >= n or y < 0 or y >= n
 
 def printf():
     for data in ice: print(data)
@@ -63,7 +61,7 @@ def melt():
             if check[i][j] and ice[i][j] > 0:
                 ice[i][j] -= 1
 
-def bfs(x, y):
+def dfs(x, y):
     global visited, size
     if out_of_bound(x, y) or \
             visited[x][y] or \
@@ -71,14 +69,14 @@ def bfs(x, y):
     visited[x][y] = True
     size += 1
     for i in range(4):
-        bfs(x + dx[i], y + dy[i])
+        dfs(x + dx[i], y + dy[i])
 
 def count():
     global size
     res = 0
     for i in range(n):
         for j in range(n):
-            bfs(i, j)
+            dfs(i, j)
             res = max(res, size)
             size = 0
     return res

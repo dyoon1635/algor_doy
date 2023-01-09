@@ -15,9 +15,7 @@ def count_zero():
     for b in belt:
         if b == 0:
             cnt += 1
-    if cnt >= k:
-        return False
-    return True
+    return cnt < k
 
 def step_1():
     # belt와 그 위에 있는 robot이 한 칸 시계 방향 회전
